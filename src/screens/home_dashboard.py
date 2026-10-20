@@ -1,3 +1,4 @@
+
 # src/screens/home_dashboard.py
 import streamlit as st
 
@@ -10,21 +11,54 @@ from src.screens.ui.base_layout import (
 
 
 def home_dashboard():
-    # 1. Styles first — before anything renders
     load_fonts()
     style_base_layout()
     style_background_home()
 
-    # 2. Header (now inherits the fonts + background)
     header_home()
 
-    # 3. Page content
-    col1, col2 = st.columns(2)
+    # Center the two login sections
+    left, col1, col2, right = st.columns([0.5, 2, 2, 0.5], gap="medium")
+
     with col1:
-        if st.button("Teacher Login"):
+        st.markdown(
+            "<h2 style='text-align:center;'>I am a Teacher</h2>",
+            unsafe_allow_html=True,
+        )
+
+        # Center the image within a fixed-height area
+        st.markdown(
+            """
+            <div style="height:110px; display:flex;
+                        justify-content:center; align-items:center;">
+                <img src="https://i.ibb.co/CsmQQV6X/mascot-prof.png"
+                     style="width:120px; height:100px; object-fit:contain;">
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        if st.button("Teacher Login", use_container_width=True, type="secondary"):
             st.session_state["login_type"] = "teacher"
             st.rerun()
+
     with col2:
-        if st.button("Student Login"):
+        st.markdown(
+            "<h2 style='text-align:center;'>I am a Student</h2>",
+            unsafe_allow_html=True,
+        )
+
+        st.markdown(
+            """
+            <div style="height:110px; display:flex;
+                        justify-content:center; align-items:center;">
+                <img src="https://i.ibb.co/844D9Lrt/mascot-student.png"
+                     style="width:120px; height:100px; object-fit:contain;">
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        if st.button("Student Login", use_container_width=True, type="secondary"):
             st.session_state["login_type"] = "student"
             st.rerun()

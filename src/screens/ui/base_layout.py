@@ -19,15 +19,15 @@ def style_base_layout():
     st.markdown(
         """
         <style>
-            /* Main application */
-            .stApp {
-                font-family: 'Outfit', sans-serif !important;
-            }
+            # /* Main application */
+            # .stApp {
+            #     font-family: 'Outfit', sans-serif !important;
+            # }
 
-            /* Hide Streamlit chrome */
-            #MainMenu, footer, header {
-                visibility: hidden;
-            }
+            # /* Hide Streamlit chrome */
+            # #MainMenu, footer, header {
+            #     visibility: hidden;
+            # }
 
             /* Layout spacing */
             .block-container {
@@ -86,6 +86,7 @@ def style_base_layout():
     )
 
 
+
 def style_background_home():
     st.markdown(
         """
@@ -93,10 +94,50 @@ def style_background_home():
             .stApp {
                 background: #5865F2 !important;
             }
+
+            /* Style only the two login cards */
+            div[data-testid="stColumn"]:has(
+                div[data-testid="stButton"]
+            ) {
+                background: #E0E3FF !important;
+                padding: 2rem 1.5rem !important;
+                border-radius: 1.8rem !important;
+                min-height: 340px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            /* Keep empty columns transparent */
+            div[data-testid="stColumn"]:not(
+                :has(div[data-testid="stButton"])
+            ) {
+                background: transparent !important;
+                padding: 0 !important;
+                border-radius: 0 !important;
+            }
+
+            div[data-testid="stColumn"] h2 {
+                color: #5B459E !important;
+                font-family: 'Oswald', sans-serif !important;
+                font-size: 1.8rem !important;
+                text-align: center;
+                line-height: 1.3 !important;
+            }
+
+            /* Login buttons */
+            div[data-testid="stColumn"] button[kind="secondary"] {
+                background: #5B459E !important;
+                color: white !important;
+                border: none !important;
+                border-radius: 2rem !important;
+                width: 100%;
+            }
         </style>
         """,
         unsafe_allow_html=True,
     )
+
 
 
 def style_background_dashboard():
@@ -105,6 +146,22 @@ def style_background_dashboard():
         <style>
             .stApp {
                 background: #E0E3FF !important;
+            }
+
+            /* Dashboard heading */
+            .stApp h1,
+            .stApp [data-testid="stHeading"] h1 {
+                color: #5B459E !important;
+                font-family: 'Oswald', sans-serif !important;
+                font-size: 3.5rem !important;
+                font-weight: 700 !important;
+            }
+
+            /* Dashboard body text */
+            .stApp [data-testid="stMarkdownContainer"],
+            .stApp [data-testid="stMarkdownContainer"] p {
+                color: #37305A !important;
+                font-family: 'Outfit', sans-serif !important;
             }
         </style>
         """,
