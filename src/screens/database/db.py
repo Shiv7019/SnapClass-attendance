@@ -15,8 +15,14 @@ def create_teacher(username, password, name):
     return response
 
 def teacher_login(username, password):
+<<<<<<< HEAD
     response = supabase.table('teachers').select('*').eq('username', username).eq('password', password).execute()
     print("DB RESULT:", response.data)          # ← debug
     if len(response.data) > 0:
         return response.data[0]
     return None
+=======
+    # ADDED .execute() at the end
+    response = supabase.table('teachers').select('*').eq('username', username).eq('password', password).execute()
+    return len(response.data) > 0
+>>>>>>> origin/main

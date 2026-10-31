@@ -29,4 +29,5 @@ Thumbs.db
 .coverage
 htmlcov/
 
+# Build files
 dist/

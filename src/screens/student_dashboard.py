@@ -16,6 +16,7 @@ def student_dashboard():
 
     dashboard_navigation()
 
+<<<<<<< HEAD
     student_screen()
 
 
@@ -26,3 +27,7 @@ def student_screen():
     st.camera_input("Position your face in the center")
 
 
+=======
+    st.title("Student Dashboard")
+    st.write("Welcome to the student dashboard!")
+>>>>>>> origin/main
