@@ -1,5 +1,6 @@
-
 import streamlit as st
+from PIL import Image
+import numpy as np
 
 from src.screens.components.navigation import dashboard_navigation
 from src.screens.ui.base_layout import (
@@ -15,19 +16,16 @@ def student_dashboard():
     style_background_dashboard()
 
     dashboard_navigation()
-
-<<<<<<< HEAD
     student_screen()
 
 
 def student_screen():
-    st.title("Student Dashboard", text_alignment='center')
+    st.title("Student Dashboard", text_alignment="center")
     st.header("Login using FaceID", text_alignment="center")
 
-    st.camera_input("Position your face in the center")
+    photo_source = st.camera_input("Position your face in the center")
 
-
-=======
-    st.title("Student Dashboard")
-    st.write("Welcome to the student dashboard!")
->>>>>>> origin/main
+    if photo_source:
+        image = Image.open(photo_source)
+        image_array = np.array(image)
+        st.image(image_array, caption="Captured image")
